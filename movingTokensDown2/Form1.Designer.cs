@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnStart = new System.Windows.Forms.Button();
+            this.moveToken = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnStart
@@ -40,6 +42,11 @@
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // moveToken
+            // 
+            this.moveToken.Interval = 500;
+            this.moveToken.Tick += new System.EventHandler(this.moveToken_Tick);
             // 
             // Form1
             // 
@@ -57,6 +64,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Timer moveToken;
     }
 }
 
