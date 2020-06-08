@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.btnStart = new System.Windows.Forms.Button();
             this.moveToken = new System.Windows.Forms.Timer(this.components);
+            this.lblTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnStart
@@ -45,19 +46,29 @@
             // 
             // moveToken
             // 
-            this.moveToken.Interval = 500;
             this.moveToken.Tick += new System.EventHandler(this.moveToken_Tick);
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(126, 235);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(28, 13);
+            this.lblTest.TabIndex = 1;
+            this.lblTest.Text = "Test";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 455);
+            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -65,6 +76,7 @@
 
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Timer moveToken;
+        private System.Windows.Forms.Label lblTest;
     }
 }
 

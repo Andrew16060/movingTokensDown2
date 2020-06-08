@@ -20,11 +20,12 @@ namespace movingTokensDown2
         }
 
         Random rand = new Random();
-        token[] redTokens = new token[3];
+        List<token> redTokens = new List<token>();
         Bitmap redImage = new Bitmap(@"../../../redCircle.png");
-        int blueDist = 35;
+        int blueDist = 5;
         int down = 1;
-        int move = 0;
+        int listNumber = 0;
+        int waitTime = 7;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -38,19 +39,24 @@ namespace movingTokensDown2
 
         private void moveToken_Tick(object sender, EventArgs e)
         {
-            
-            for (int i = 0; i < 3; i++)
+            lblTest.Text = waitTime.ToString();
+            if (waitTime == 7)
             {
-                int randNumber = rand.Next(0, 10);
-                int xCoordinate = randNumber * 35 + 15;
-                redTokens[i] = new token(xCoordinate, 10, redImage);
-                Controls.Add(redTokens[i].TokenPictureBox);
-                //move++;
+                for (int i = 0; i < 3; i++)
+                {
+                    int randNumber = rand.Next(0, 10);
+                    int xCoordinate = randNumber * 35 + 15;
+                    redTokens.Add(new token(xCoordinate, 0, redImage));
+                    Controls.Add(redTokens[listNumber].TokenPictureBox);
+                    listNumber++;
+                }
+                waitTime = 0;
             }
-            for (int i = 0; i < move; i++)
+            for (int i = 0; i < redTokens.Count; i++)
             {
-                //redTokens[i].moveUpDown(down, blueDist);
+                redTokens[i].moveUpDown(down, blueDist);
             }
+            waitTime++;
         }
     }
 }
