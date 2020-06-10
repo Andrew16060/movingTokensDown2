@@ -15,21 +15,25 @@ namespace movingTokensDown2
         public Form1()
         {
             InitializeComponent();
-            //35px by 35px is the redToken image...
-            //390px width of form, 20px on each side to fit 10 tokens on screen...
         }
 
         Random rand = new Random();
         List<token> redTokens = new List<token>();
+        token blueToken;
         Bitmap redImage = new Bitmap(@"../../../redCircle.png");
-        int blueDist = 5;
+        Bitmap blueImage = new Bitmap(@"../../../blueCircle.png");
+        int redDist = 1;
         int down = 1;
+        int left = -1;
+        int right = 1;
+        int blueDist = 5;
         int listNumber = 0;
-        int waitTime = 7;
+        int waitTime = 35;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            blueToken = new token(15, 362, blueImage);
+            Controls.Add(blueToken.TokenPictureBox);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
@@ -40,7 +44,7 @@ namespace movingTokensDown2
         private void moveToken_Tick(object sender, EventArgs e)
         {
             lblTest.Text = waitTime.ToString();
-            if (waitTime == 7)
+            if (waitTime == 35)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -54,9 +58,21 @@ namespace movingTokensDown2
             }
             for (int i = 0; i < redTokens.Count; i++)
             {
-                redTokens[i].moveUpDown(down, blueDist);
+                redTokens[i].moveUpDown(down, redDist);
             }
             waitTime++;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.A)
+            {
+                blueToken.moveRightLeft(left, blueDist);
+            }
+            if (e.KeyCode == Keys.D)
+            {
+                blueToken.moveRightLeft(right, blueDist);
+            }
         }
     }
 }

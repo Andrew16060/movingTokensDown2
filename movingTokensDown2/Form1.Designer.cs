@@ -46,12 +46,13 @@
             // 
             // moveToken
             // 
+            this.moveToken.Interval = 25;
             this.moveToken.Tick += new System.EventHandler(this.moveToken_Tick);
             // 
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(126, 235);
+            this.lblTest.Location = new System.Drawing.Point(334, 387);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(28, 13);
             this.lblTest.TabIndex = 1;
@@ -64,9 +65,11 @@
             this.ClientSize = new System.Drawing.Size(374, 455);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnStart);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
