@@ -20,6 +20,7 @@ namespace movingTokensDown2
         Random rand = new Random();
         List<token> redTokens = new List<token>();
         token blueToken;
+        //size 35, 35 for red and blue tokens
         Bitmap redImage = new Bitmap(@"../../../redCircle.png");
         Bitmap blueImage = new Bitmap(@"../../../blueCircle.png");
         int redDist = 1;
@@ -72,6 +73,14 @@ namespace movingTokensDown2
             if (e.KeyCode == Keys.D)
             {
                 blueToken.moveRightLeft(right, blueDist);
+            }
+            if (blueToken.TokenPictureBox.Location.X < 15)
+            {
+                blueToken.moveRightLeft(right, blueDist);
+            }
+            if (blueToken.TokenPictureBox.Location.X > 330)
+            {
+                blueToken.moveRightLeft(left, blueDist);
             }
         }
     }
