@@ -32,13 +32,15 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.moveToken = new System.Windows.Forms.Timer(this.components);
             this.lblTest = new System.Windows.Forms.Label();
+            this.lbltimePlayed = new System.Windows.Forms.Label();
+            this.timePlayed = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 403);
+            this.btnStart.Location = new System.Drawing.Point(12, 385);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(350, 40);
+            this.btnStart.Size = new System.Drawing.Size(210, 40);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -52,17 +54,32 @@
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(334, 387);
+            this.lblTest.Location = new System.Drawing.Point(194, 369);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(28, 13);
             this.lblTest.TabIndex = 1;
             this.lblTest.Text = "Test";
             // 
+            // lbltimePlayed
+            // 
+            this.lbltimePlayed.AutoSize = true;
+            this.lbltimePlayed.Location = new System.Drawing.Point(9, 9);
+            this.lbltimePlayed.Name = "lbltimePlayed";
+            this.lbltimePlayed.Size = new System.Drawing.Size(39, 13);
+            this.lbltimePlayed.TabIndex = 2;
+            this.lbltimePlayed.Text = "TIME: ";
+            // 
+            // timePlayed
+            // 
+            this.timePlayed.Interval = 1000;
+            this.timePlayed.Tick += new System.EventHandler(this.timePlayed_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 455);
+            this.ClientSize = new System.Drawing.Size(234, 437);
+            this.Controls.Add(this.lbltimePlayed);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnStart);
             this.KeyPreview = true;
@@ -80,6 +97,8 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Timer moveToken;
         private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.Label lbltimePlayed;
+        private System.Windows.Forms.Timer timePlayed;
     }
 }
 

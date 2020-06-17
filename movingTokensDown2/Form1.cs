@@ -27,41 +27,93 @@ namespace movingTokensDown2
         int down = 1;
         int left = -1;
         int right = 1;
-        int blueDist = 5;
+        int blueDist = 35;
         int listNumber = 0;
-        int waitTime = 35;
+        int waitTime = 90;
+        int playTime = 0;
+        int resetTime = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            blueToken = new token(15, 362, blueImage);
+            blueToken = new token(15, 344, blueImage);
             Controls.Add(blueToken.TokenPictureBox);
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             moveToken.Enabled = true;
+            timePlayed.Enabled = true;
         }
 
         private void moveToken_Tick(object sender, EventArgs e)
         {
-            lblTest.Text = waitTime.ToString();
-            if (waitTime == 35)
+            if (lbltimePlayed.Text == 20.ToString())
             {
-                for (int i = 0; i < 3; i++)
+                moveToken.Interval = 20;
+            }
+            if (lbltimePlayed.Text == 25.ToString())
+            {
+                moveToken.Interval = 15;
+            }
+            if (lbltimePlayed.Text == 30.ToString())
+            {
+                moveToken.Interval = 10;
+            }
+            if (lbltimePlayed.Text == 35.ToString())
+            {
+                moveToken.Interval = 5;
+            }
+            if (lbltimePlayed.Text == 40.ToString())
+            {
+                moveToken.Interval = 1;
+            }
+
+            if (resetTime < 6)
+            {
+                lblTest.Text = waitTime.ToString();
+                if (waitTime == 90)
                 {
-                    int randNumber = rand.Next(0, 10);
-                    int xCoordinate = randNumber * 35 + 15;
-                    redTokens.Add(new token(xCoordinate, 0, redImage));
-                    Controls.Add(redTokens[listNumber].TokenPictureBox);
-                    listNumber++;
+                    for (int i = 0; i < 5; i++)
+                    {
+                        int randNumber = rand.Next(0, 6);
+                        int xCoordinate = randNumber * 35 + 15;
+                        redTokens.Add(new token(xCoordinate, -35, redImage));
+                        Controls.Add(redTokens[listNumber].TokenPictureBox);
+                        listNumber++;
+                    }
+                    waitTime = 0;
+                    resetTime++;
                 }
-                waitTime = 0;
+                waitTime++;
+                for (int i = 0; i < redTokens.Count; i++)
+                {
+                    redTokens[i].moveUpDown(down, redDist);
+                    if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                    {
+                        moveToken.Enabled = false;
+                        MessageBox.Show("GAME OVER!");
+                    }
+                }
             }
-            for (int i = 0; i < redTokens.Count; i++)
+            else
             {
-                redTokens[i].moveUpDown(down, redDist);
+                for (int i = 0; i < redTokens.Count; i++)
+                {
+                    redTokens[i].moveUpDown(down, redDist);
+                    if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                    {
+                        moveToken.Enabled = false;
+                        MessageBox.Show("GAME OVER!");
+                    }
+                    if (redTokens[i].TokenPictureBox.Location.Y > 476)
+                    {
+                        redTokens[i].resetPosition();
+                        int randNumber = rand.Next(0, 6);
+                        int xCoordinate = randNumber * 35 + 15;
+                        redTokens[i].moveRightLeft(right, xCoordinate);
+                    }
+                }
             }
-            waitTime++;
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -78,10 +130,16 @@ namespace movingTokensDown2
             {
                 blueToken.moveRightLeft(right, blueDist);
             }
-            if (blueToken.TokenPictureBox.Location.X > 330)
+            if (blueToken.TokenPictureBox.Location.X > 190)
             {
                 blueToken.moveRightLeft(left, blueDist);
             }
+        }
+
+        private void timePlayed_Tick(object sender, EventArgs e)
+        {
+            playTime++;
+            lbltimePlayed.Text = playTime.ToString();
         }
     }
 }

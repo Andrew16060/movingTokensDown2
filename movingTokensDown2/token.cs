@@ -36,5 +36,11 @@ namespace movingTokensDown2
         {
             TokenPictureBox.Left = TokenPictureBox.Left + (direction * distance);
         }
+
+        public void resetPosition()
+        {
+            TokenPictureBox.Left = 0;
+            TokenPictureBox.Top = -65;
+        }
     }
 }
