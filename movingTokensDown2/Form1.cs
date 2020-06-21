@@ -47,23 +47,23 @@ namespace movingTokensDown2
 
         private void moveToken_Tick(object sender, EventArgs e)
         {
-            if (lbltimePlayed.Text == 20.ToString())
+            if (playTime == 20)
             {
                 moveToken.Interval = 20;
             }
-            if (lbltimePlayed.Text == 25.ToString())
+            if (playTime == 25)
             {
                 moveToken.Interval = 15;
             }
-            if (lbltimePlayed.Text == 30.ToString())
+            if (playTime == 30)
             {
                 moveToken.Interval = 10;
             }
-            if (lbltimePlayed.Text == 35.ToString())
+            if (playTime == 35)
             {
                 moveToken.Interval = 5;
             }
-            if (lbltimePlayed.Text == 40.ToString())
+            if (playTime == 40)
             {
                 moveToken.Interval = 1;
             }
@@ -91,7 +91,12 @@ namespace movingTokensDown2
                     if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
                     {
                         moveToken.Enabled = false;
+                        timePlayed.Enabled = false;
                         MessageBox.Show("GAME OVER!");
+                        EndScreen endScreen = new EndScreen(playTime);
+                        this.Hide();
+                        endScreen.ShowDialog();
+                        this.Close();
                     }
                 }
             }
@@ -103,7 +108,12 @@ namespace movingTokensDown2
                     if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
                     {
                         moveToken.Enabled = false;
+                        timePlayed.Enabled = false;
                         MessageBox.Show("GAME OVER!");
+                        EndScreen endScreen = new EndScreen(playTime);
+                        this.Hide();
+                        endScreen.ShowDialog();
+                        this.Close();
                     }
                     if (redTokens[i].TokenPictureBox.Location.Y > 476)
                     {
@@ -139,7 +149,7 @@ namespace movingTokensDown2
         private void timePlayed_Tick(object sender, EventArgs e)
         {
             playTime++;
-            lbltimePlayed.Text = playTime.ToString();
+            this.Text = "TIME: " + playTime.ToString();
         }
     }
 }

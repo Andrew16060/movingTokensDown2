@@ -32,7 +32,6 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.moveToken = new System.Windows.Forms.Timer(this.components);
             this.lblTest = new System.Windows.Forms.Label();
-            this.lbltimePlayed = new System.Windows.Forms.Label();
             this.timePlayed = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
@@ -60,15 +59,6 @@
             this.lblTest.TabIndex = 1;
             this.lblTest.Text = "Test";
             // 
-            // lbltimePlayed
-            // 
-            this.lbltimePlayed.AutoSize = true;
-            this.lbltimePlayed.Location = new System.Drawing.Point(9, 9);
-            this.lbltimePlayed.Name = "lbltimePlayed";
-            this.lbltimePlayed.Size = new System.Drawing.Size(39, 13);
-            this.lbltimePlayed.TabIndex = 2;
-            this.lbltimePlayed.Text = "TIME: ";
-            // 
             // timePlayed
             // 
             this.timePlayed.Interval = 1000;
@@ -79,12 +69,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 437);
-            this.Controls.Add(this.lbltimePlayed);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.btnStart);
             this.KeyPreview = true;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "TIME: 0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
@@ -97,7 +86,6 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Timer moveToken;
         private System.Windows.Forms.Label lblTest;
-        private System.Windows.Forms.Label lbltimePlayed;
         private System.Windows.Forms.Timer timePlayed;
     }
 }
