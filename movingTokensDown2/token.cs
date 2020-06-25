@@ -18,7 +18,9 @@ namespace movingTokensDown2
             tokenPictureBox.Image = argsImage;
             tokenPictureBox.Left = argsPositionX;
             tokenPictureBox.Top = argsPositionY;
-            tokenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            tokenPictureBox.Width = 60;
+            tokenPictureBox.Height = 60;
+            tokenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
         }
 
         public PictureBox TokenPictureBox

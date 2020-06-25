@@ -20,22 +20,23 @@ namespace movingTokensDown2
         Random rand = new Random();
         List<token> redTokens = new List<token>();
         token blueToken;
-        //size 35, 35 for red and blue tokens
-        Bitmap redImage = new Bitmap(@"../../../redCircle.png");
-        Bitmap blueImage = new Bitmap(@"../../../blueCircle.png");
+        //size 60, 60 for squares
+        Bitmap redImage = new Bitmap(@"../../../squareSick.png");
+        Bitmap blueImage = new Bitmap(@"../../../squarePlayer.png");
         int redDist = 1;
         int down = 1;
         int left = -1;
         int right = 1;
-        int blueDist = 35;
+        int blueDist = 60;
         int listNumber = 0;
-        int waitTime = 90;
+        int waitTime = 150;
         int playTime = 0;
         int resetTime = 0;
+        int noDuplicate = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            blueToken = new token(15, 344, blueImage);
+            blueToken = new token(15, 643, blueImage);
             Controls.Add(blueToken.TokenPictureBox);
         }
 
@@ -70,14 +71,13 @@ namespace movingTokensDown2
 
             if (resetTime < 6)
             {
-                lblTest.Text = waitTime.ToString();
-                if (waitTime == 90)
+                if (waitTime == 150)
                 {
                     for (int i = 0; i < 5; i++)
                     {
                         int randNumber = rand.Next(0, 6);
-                        int xCoordinate = randNumber * 35 + 15;
-                        redTokens.Add(new token(xCoordinate, -35, redImage));
+                        int xCoordinate = randNumber * 60 + 15;
+                        redTokens.Add(new token(xCoordinate, -60, redImage));
                         Controls.Add(redTokens[listNumber].TokenPictureBox);
                         listNumber++;
                     }
@@ -87,16 +87,20 @@ namespace movingTokensDown2
                 waitTime++;
                 for (int i = 0; i < redTokens.Count; i++)
                 {
-                    redTokens[i].moveUpDown(down, redDist);
-                    if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                    if (noDuplicate < 1)
                     {
-                        moveToken.Enabled = false;
-                        timePlayed.Enabled = false;
-                        MessageBox.Show("GAME OVER!");
-                        EndScreen endScreen = new EndScreen(playTime);
-                        this.Hide();
-                        endScreen.ShowDialog();
-                        this.Close();
+                        redTokens[i].moveUpDown(down, redDist);
+                        if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                        {
+                            noDuplicate++;
+                            moveToken.Enabled = false;
+                            timePlayed.Enabled = false;
+                            MessageBox.Show("GAME OVER!");
+                            EndScreen endScreen = new EndScreen(playTime);
+                            this.Hide();
+                            endScreen.Show();
+                            this.Close();
+                        }
                     }
                 }
             }
@@ -104,22 +108,26 @@ namespace movingTokensDown2
             {
                 for (int i = 0; i < redTokens.Count; i++)
                 {
-                    redTokens[i].moveUpDown(down, redDist);
-                    if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                    if (noDuplicate < 1)
                     {
-                        moveToken.Enabled = false;
-                        timePlayed.Enabled = false;
-                        MessageBox.Show("GAME OVER!");
-                        EndScreen endScreen = new EndScreen(playTime);
-                        this.Hide();
-                        endScreen.ShowDialog();
-                        this.Close();
+                        redTokens[i].moveUpDown(down, redDist);
+                        if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                        {
+                            noDuplicate++;
+                            moveToken.Enabled = false;
+                            timePlayed.Enabled = false;
+                            MessageBox.Show("GAME OVER!");
+                            EndScreen endScreen = new EndScreen(playTime);
+                            this.Hide();
+                            endScreen.Show();
+                            this.Close();
+                        }
                     }
-                    if (redTokens[i].TokenPictureBox.Location.Y > 476)
+                    if (redTokens[i].TokenPictureBox.Location.Y > 870)
                     {
                         redTokens[i].resetPosition();
                         int randNumber = rand.Next(0, 6);
-                        int xCoordinate = randNumber * 35 + 15;
+                        int xCoordinate = randNumber * 60 + 15;
                         redTokens[i].moveRightLeft(right, xCoordinate);
                     }
                 }
@@ -136,11 +144,19 @@ namespace movingTokensDown2
             {
                 blueToken.moveRightLeft(right, blueDist);
             }
+            if (e.KeyCode == Keys.Left)
+            {
+                blueToken.moveRightLeft(left, blueDist);
+            }
+            if (e.KeyCode == Keys.Right)
+            {
+                blueToken.moveRightLeft(right, blueDist);
+            }
             if (blueToken.TokenPictureBox.Location.X < 15)
             {
                 blueToken.moveRightLeft(right, blueDist);
             }
-            if (blueToken.TokenPictureBox.Location.X > 190)
+            if (blueToken.TokenPictureBox.Location.X > 315)
             {
                 blueToken.moveRightLeft(left, blueDist);
             }

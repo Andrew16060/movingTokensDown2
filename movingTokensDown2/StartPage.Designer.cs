@@ -66,11 +66,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 302);
+            this.ControlBox = false;
             this.Controls.Add(this.btnHelp);
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.lblWelcomeText);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "StartPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StartPage";
+            this.TransparencyKey = System.Drawing.Color.White;
             this.ResumeLayout(false);
             this.PerformLayout();
 
