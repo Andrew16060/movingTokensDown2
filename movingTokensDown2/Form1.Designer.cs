@@ -36,9 +36,11 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(12, 709);
+            this.btnStart.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnStart.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(0, 701);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(365, 40);
+            this.btnStart.Size = new System.Drawing.Size(389, 60);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = true;

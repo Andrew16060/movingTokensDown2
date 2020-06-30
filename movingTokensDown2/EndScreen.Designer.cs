@@ -30,8 +30,8 @@
         {
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.lblHighScores = new System.Windows.Forms.Label();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.btnHighScores = new System.Windows.Forms.Button();
+            this.btnMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtName
@@ -43,41 +43,46 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(79, 64);
+            this.btnSubmit.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubmit.Location = new System.Drawing.Point(65, 272);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(232, 114);
+            this.btnSubmit.Size = new System.Drawing.Size(280, 39);
             this.btnSubmit.TabIndex = 1;
             this.btnSubmit.Text = "SUBMIT";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // lblHighScores
+            // btnHighScores
             // 
-            this.lblHighScores.AutoSize = true;
-            this.lblHighScores.Location = new System.Drawing.Point(405, 33);
-            this.lblHighScores.Name = "lblHighScores";
-            this.lblHighScores.Size = new System.Drawing.Size(84, 13);
-            this.lblHighScores.TabIndex = 2;
-            this.lblHighScores.Text = "HIGH SCORES:";
+            this.btnHighScores.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHighScores.Location = new System.Drawing.Point(65, 317);
+            this.btnHighScores.Name = "btnHighScores";
+            this.btnHighScores.Size = new System.Drawing.Size(280, 40);
+            this.btnHighScores.TabIndex = 5;
+            this.btnHighScores.Text = "HIGH SCORES";
+            this.btnHighScores.UseVisualStyleBackColor = true;
+            this.btnHighScores.Click += new System.EventHandler(this.btnHighScores_Click);
             // 
-            // btnExit
+            // btnMenu
             // 
-            this.btnExit.Location = new System.Drawing.Point(284, 227);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(153, 56);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "EXIT";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnMenu.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenu.Location = new System.Drawing.Point(65, 363);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(280, 40);
+            this.btnMenu.TabIndex = 6;
+            this.btnMenu.Text = "BACK TO MENU";
+            this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // EndScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 330);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.ClientSize = new System.Drawing.Size(389, 761);
             this.ControlBox = false;
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.lblHighScores);
+            this.Controls.Add(this.btnMenu);
+            this.Controls.Add(this.btnHighScores);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.txtName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -93,7 +98,7 @@
 
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Label lblHighScores;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnHighScores;
+        private System.Windows.Forms.Button btnMenu;
     }
 }

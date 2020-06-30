@@ -15,6 +15,7 @@ namespace movingTokensDown2
         public Form1()
         {
             InitializeComponent();
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#2B2222");
         }
 
         Random rand = new Random();
@@ -29,14 +30,14 @@ namespace movingTokensDown2
         int right = 1;
         int blueDist = 60;
         int listNumber = 0;
-        int waitTime = 150;
+        int waitTime =140;
         int playTime = 0;
         int resetTime = 0;
         int noDuplicate = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            blueToken = new token(15, 643, blueImage);
+            blueToken = new token(15, 629, blueImage);
             Controls.Add(blueToken.TokenPictureBox);
         }
 
@@ -71,7 +72,7 @@ namespace movingTokensDown2
 
             if (resetTime < 6)
             {
-                if (waitTime == 150)
+                if (waitTime == 140)
                 {
                     for (int i = 0; i < 5; i++)
                     {
@@ -123,7 +124,7 @@ namespace movingTokensDown2
                             this.Close();
                         }
                     }
-                    if (redTokens[i].TokenPictureBox.Location.Y > 870)
+                    if (redTokens[i].TokenPictureBox.Location.Y > 800)
                     {
                         redTokens[i].resetPosition();
                         int randNumber = rand.Next(0, 6);

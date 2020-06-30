@@ -35,30 +35,40 @@ namespace movingTokensDown2
                 File.AppendAllText(pathUsername, username + "\r\n");
                 File.AppendAllText(pathTimeScore, timeScore2 + "\r\n");
                 MessageBox.Show("Well done " + username + " on getting a score of " + timeScore2 + "!");
-                string[] readUsername = File.ReadAllLines(pathUsername);
-                string[] readTimeScore = File.ReadAllLines(pathTimeScore);
-                int[] readTimeScoreInt = new int[readTimeScore.Length];
-                for (int i = 0; i < readTimeScore.Length; i++)
-                {
-                    readTimeScoreInt[i] = Convert.ToInt32(readTimeScore[i]);
-                }
-                Array.Sort(readTimeScoreInt, readUsername);
-
-                int limit = 0;
-                for (int i = readUsername.Length - 1; i > 0; i--)
-                {
-                    if  (limit < 10)
-                    {
-                        lblHighScores.Text += "\r\n" + readUsername[i] + " " + readTimeScoreInt[i];
-                        limit++;
-                    }
-                }
             }
+
+            btnSubmit.Enabled = false;
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnHighScores_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            string[] readUsername = File.ReadAllLines(pathUsername);
+            string[] readTimeScore = File.ReadAllLines(pathTimeScore);
+            int[] readTimeScoreInt = new int[readTimeScore.Length];
+            for (int i = 0; i < readTimeScore.Length; i++)
+            {
+                readTimeScoreInt[i] = Convert.ToInt32(readTimeScore[i]);
+            }
+            Array.Sort(readTimeScoreInt, readUsername);
+
+            int limit = 0;
+            string output = "";
+            for (int i = readUsername.Length - 1; i > 0; i--)
+            {
+                if (limit < 10)
+                {
+                    output += readUsername[i] + " " + readTimeScoreInt[i].ToString() + "\r\n";
+                    limit++;
+                }
+            }
+            MessageBox.Show(output);
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            StartPage menu = new StartPage();
+            this.Hide();
+            menu.Show();
         }
     }
 }

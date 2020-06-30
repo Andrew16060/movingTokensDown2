@@ -21,6 +21,7 @@ namespace movingTokensDown2
             tokenPictureBox.Width = 60;
             tokenPictureBox.Height = 60;
             tokenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            tokenPictureBox.BackColor = Color.Transparent;
         }
 
         public PictureBox TokenPictureBox
@@ -42,7 +43,7 @@ namespace movingTokensDown2
         public void resetPosition()
         {
             TokenPictureBox.Left = 0;
-            TokenPictureBox.Top = -65;
+            TokenPictureBox.Top = -60;
         }
     }
 }
