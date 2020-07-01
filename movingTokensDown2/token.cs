@@ -43,7 +43,7 @@ namespace movingTokensDown2
         public void resetPosition()
         {
             TokenPictureBox.Left = 0;
-            TokenPictureBox.Top = -60;
+            TokenPictureBox.Top = -90;
         }
     }
 }

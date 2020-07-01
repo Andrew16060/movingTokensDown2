@@ -48,7 +48,7 @@
             // 
             // moveToken
             // 
-            this.moveToken.Interval = 25;
+            this.moveToken.Interval = 1;
             this.moveToken.Tick += new System.EventHandler(this.moveToken_Tick);
             // 
             // timePlayed

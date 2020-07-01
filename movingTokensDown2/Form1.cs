@@ -30,7 +30,7 @@ namespace movingTokensDown2
         int right = 1;
         int blueDist = 60;
         int listNumber = 0;
-        int waitTime =140;
+        int waitTime = 150;
         int playTime = 0;
         int resetTime = 0;
         int noDuplicate = 0;
@@ -49,30 +49,28 @@ namespace movingTokensDown2
 
         private void moveToken_Tick(object sender, EventArgs e)
         {
-            if (playTime == 20)
-            {
-                moveToken.Interval = 20;
-            }
-            if (playTime == 25)
-            {
-                moveToken.Interval = 15;
-            }
             if (playTime == 30)
             {
-                moveToken.Interval = 10;
+                moveToken.Interval = 60;
+                down = 2;
             }
             if (playTime == 35)
             {
-                moveToken.Interval = 5;
+                moveToken.Interval = 40;
+                down = 3;
             }
-            if (playTime == 40)
+            if (playTime == 45)
             {
-                moveToken.Interval = 1;
+                moveToken.Interval = 35;
             }
-
+            if (playTime == 50)
+            {
+                moveToken.Interval = 30;
+                down = 4;
+            }
             if (resetTime < 6)
             {
-                if (waitTime == 140)
+                if (waitTime == 150)
                 {
                     for (int i = 0; i < 5; i++)
                     {
