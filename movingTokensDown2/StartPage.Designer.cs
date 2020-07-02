@@ -66,6 +66,7 @@
             this.btnHelp.TabIndex = 2;
             this.btnHelp.Text = "HELP";
             this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnExit
             // 

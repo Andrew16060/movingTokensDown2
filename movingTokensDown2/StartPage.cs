@@ -56,5 +56,11 @@ namespace movingTokensDown2
             }
             MessageBox.Show(output);
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            HelpForm helpPage = new HelpForm();
+            helpPage.Show();
+        }
     }
 }

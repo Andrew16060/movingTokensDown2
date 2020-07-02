@@ -143,14 +143,6 @@ namespace movingTokensDown2
             {
                 blueToken.moveRightLeft(right, blueDist);
             }
-            if (e.KeyCode == Keys.Left)
-            {
-                blueToken.moveRightLeft(left, blueDist);
-            }
-            if (e.KeyCode == Keys.Right)
-            {
-                blueToken.moveRightLeft(right, blueDist);
-            }
             if (blueToken.TokenPictureBox.Location.X < 15)
             {
                 blueToken.moveRightLeft(right, blueDist);
