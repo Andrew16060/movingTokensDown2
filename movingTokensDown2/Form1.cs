@@ -15,7 +15,6 @@ namespace movingTokensDown2
         public Form1()
         {
             InitializeComponent();
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#2B2222");
         }
 
         Random rand = new Random();

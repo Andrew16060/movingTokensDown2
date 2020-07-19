@@ -43,6 +43,7 @@
             // 
             // btnSubmit
             // 
+            this.btnSubmit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSubmit.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubmit.Location = new System.Drawing.Point(65, 272);
             this.btnSubmit.Name = "btnSubmit";
@@ -54,6 +55,7 @@
             // 
             // btnHighScores
             // 
+            this.btnHighScores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHighScores.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHighScores.Location = new System.Drawing.Point(65, 317);
             this.btnHighScores.Name = "btnHighScores";
@@ -65,6 +67,7 @@
             // 
             // btnMenu
             // 
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMenu.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenu.Location = new System.Drawing.Point(65, 363);
             this.btnMenu.Name = "btnMenu";
@@ -78,7 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(389, 761);
             this.ControlBox = false;
             this.Controls.Add(this.btnMenu);

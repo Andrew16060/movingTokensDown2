@@ -62,5 +62,10 @@ namespace movingTokensDown2
             HelpForm helpPage = new HelpForm();
             helpPage.Show();
         }
+
+        private void lblWelcomeText_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
