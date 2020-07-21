@@ -21,12 +21,7 @@ namespace movingTokensDown2
         string pathUsername = @"../../../gameNames.txt";
         string pathTimeScore = @"../../../gameTimeScore.txt";
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            Form1 gameForm = new Form1();
-            this.Hide();
-            gameForm.Show();
-        }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -66,6 +61,13 @@ namespace movingTokensDown2
         private void lblWelcomeText_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnStart_Click_1(object sender, EventArgs e)
+        {
+            Form1 gameForm = new Form1();
+            this.Hide();
+            gameForm.Show();
         }
     }
 }
