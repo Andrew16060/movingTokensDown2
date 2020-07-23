@@ -28,6 +28,7 @@ namespace movingTokensDown2
             if (txtName.Text == "")
             {
                 MessageBox.Show("Please input a name.");
+                btnSubmit.Enabled = true;
             }
             else
             {
@@ -35,9 +36,8 @@ namespace movingTokensDown2
                 File.AppendAllText(pathUsername, username + "\r\n");
                 File.AppendAllText(pathTimeScore, timeScore2 + "\r\n");
                 MessageBox.Show("Well done " + username + " on getting a score of " + timeScore2 + "!");
+                btnSubmit.Enabled = false;
             }
-
-            btnSubmit.Enabled = false;
         }
 
         private void btnHighScores_Click(object sender, EventArgs e)
@@ -69,6 +69,13 @@ namespace movingTokensDown2
             StartPage menu = new StartPage();
             this.Hide();
             menu.Show();
+        }
+
+        // Only allow alphabetical characters in the name text box
+        // Code by 'V4Vendetta' from https://stackoverflow.com/questions/8321871/how-to-make-a-textbox-accept-only-alphabetic-characters
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsLetter(e.KeyChar) || e.KeyChar == (char)Keys.Back);
         }
     }
 }

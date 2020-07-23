@@ -17,6 +17,7 @@ namespace movingTokensDown2
             InitializeComponent();
         }
 
+        // Closes the tutorial form when the close button is clicked
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();

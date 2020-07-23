@@ -17,12 +17,16 @@ namespace movingTokensDown2
             InitializeComponent();
         }
 
+        // Defines random variable
         Random rand = new Random();
+        // Creates list for displaying the sick squares linking to the token class for getting the image properties
         List<token> redTokens = new List<token>();
         token blueToken;
-        //size 60, 60 for squares
+        // The squares are 60 by 60 pixels
+        // Defines location for images to be used in class
         Bitmap redImage = new Bitmap(@"../../../squareSick.png");
         Bitmap blueImage = new Bitmap(@"../../../squarePlayer.png");
+        // Defines variables used such as the distance the  pictures move etc.
         int redDist = 1;
         int down = 1;
         int left = -1;
@@ -34,20 +38,24 @@ namespace movingTokensDown2
         int resetTime = 0;
         int noDuplicate = 0;
 
+        // Displays the player controlled character when the form loads
         private void Form1_Load(object sender, EventArgs e)
         {
             blueToken = new token(15, 629, blueImage);
             Controls.Add(blueToken.TokenPictureBox);
         }
 
+        // When the start button is clicked it starts the two timers to keep track of the time and to move the sick sqaures towards the player
         private void btnStart_Click(object sender, EventArgs e)
         {
             moveToken.Enabled = true;
             timePlayed.Enabled = true;
         }
 
+        // Moves the pictures boxes down the screen
         private void moveToken_Tick(object sender, EventArgs e)
         {
+            // Slowly increases the speed of the picture boxes to increase difficulty as the game progresses
             if (playTime == 30)
             {
                 moveToken.Interval = 60;
@@ -67,6 +75,7 @@ namespace movingTokensDown2
                 moveToken.Interval = 30;
                 down = 4;
             }
+            // Creates 
             if (resetTime < 6)
             {
                 if (waitTime == 150)
