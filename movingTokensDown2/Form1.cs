@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace movingTokensDown2
+namespace AssessmentGame
 {
     public partial class Form1 : Form
     {
@@ -19,19 +19,19 @@ namespace movingTokensDown2
 
         // Defines random variable
         Random rand = new Random();
-        // Creates list for displaying the sick squares linking to the token class for getting the image properties
-        List<token> redTokens = new List<token>();
-        token blueToken;
+        // Creates list for displaying the sick squares linking to the SquareImage class for getting the image properties
+        List<SquareImage> greenSquares = new List<SquareImage>();
+        SquareImage redSquarePlayer;
         // The squares are 60 by 60 pixels
         // Defines location for images to be used in class
-        Bitmap redImage = new Bitmap(@"../../../squareSick.png");
-        Bitmap blueImage = new Bitmap(@"../../../squarePlayer.png");
+        Bitmap greenSquareImage = new Bitmap(@"../../../squareSick.png");
+        Bitmap redSquareImage = new Bitmap(@"../../../squarePlayer.png");
         // Defines variables used such as the distance the  pictures move etc.
-        int redDist = 1;
+        int greenDistance = 1;
         int down = 1;
         int left = -1;
         int right = 1;
-        int blueDist = 60;
+        int redDistance = 60;
         int listNumber = 0;
         int waitTime = 150;
         int playTime = 0;
@@ -41,38 +41,38 @@ namespace movingTokensDown2
         // Displays the player controlled character when the form loads
         private void Form1_Load(object sender, EventArgs e)
         {
-            blueToken = new token(15, 629, blueImage);
-            Controls.Add(blueToken.TokenPictureBox);
+            redSquarePlayer = new SquareImage(15, 629, redSquareImage);
+            Controls.Add(redSquarePlayer.SquarePictureBox);
         }
 
         // When the start button is clicked it starts the two timers to keep track of the time and to move the sick sqaures towards the player
         private void btnStart_Click(object sender, EventArgs e)
         {
-            moveToken.Enabled = true;
-            timePlayed.Enabled = true;
+            MoveGreenSquares.Enabled = true;
+            TimePlayed.Enabled = true;
         }
 
         // Moves the pictures boxes down the screen
-        private void moveToken_Tick(object sender, EventArgs e)
+        private void MoveGreenSquares_Tick(object sender, EventArgs e)
         {
             // Slowly increases the speed of the picture boxes to increase difficulty as the game progresses
             if (playTime == 30)
             {
-                moveToken.Interval = 60;
+                MoveGreenSquares.Interval = 60;
                 down = 2;
             }
             if (playTime == 35)
             {
-                moveToken.Interval = 40;
+                MoveGreenSquares.Interval = 40;
                 down = 3;
             }
             if (playTime == 45)
             {
-                moveToken.Interval = 35;
+                MoveGreenSquares.Interval = 35;
             }
             if (playTime == 50)
             {
-                moveToken.Interval = 30;
+                MoveGreenSquares.Interval = 30;
                 down = 4;
             }
             // Creates 
@@ -84,24 +84,24 @@ namespace movingTokensDown2
                     {
                         int randNumber = rand.Next(0, 6);
                         int xCoordinate = randNumber * 60 + 15;
-                        redTokens.Add(new token(xCoordinate, -60, redImage));
-                        Controls.Add(redTokens[listNumber].TokenPictureBox);
+                        greenSquares.Add(new SquareImage(xCoordinate, -60, greenSquareImage));
+                        Controls.Add(greenSquares[listNumber].SquarePictureBox);
                         listNumber++;
                     }
                     waitTime = 0;
                     resetTime++;
                 }
                 waitTime++;
-                for (int i = 0; i < redTokens.Count; i++)
+                for (int i = 0; i < greenSquares.Count; i++)
                 {
                     if (noDuplicate < 1)
                     {
-                        redTokens[i].moveUpDown(down, redDist);
-                        if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                        greenSquares[i].moveUpDown(down, greenDistance);
+                        if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
                             noDuplicate++;
-                            moveToken.Enabled = false;
-                            timePlayed.Enabled = false;
+                            MoveGreenSquares.Enabled = false;
+                            TimePlayed.Enabled = false;
                             MessageBox.Show("GAME OVER!");
                             EndScreen endScreen = new EndScreen(playTime);
                             this.Hide();
@@ -113,16 +113,16 @@ namespace movingTokensDown2
             }
             else
             {
-                for (int i = 0; i < redTokens.Count; i++)
+                for (int i = 0; i < greenSquares.Count; i++)
                 {
                     if (noDuplicate < 1)
                     {
-                        redTokens[i].moveUpDown(down, redDist);
-                        if (redTokens[i].TokenPictureBox.Bounds.IntersectsWith(blueToken.TokenPictureBox.Bounds))
+                        greenSquares[i].moveUpDown(down, greenDistance);
+                        if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
                             noDuplicate++;
-                            moveToken.Enabled = false;
-                            timePlayed.Enabled = false;
+                            MoveGreenSquares.Enabled = false;
+                            TimePlayed.Enabled = false;
                             MessageBox.Show("GAME OVER!");
                             EndScreen endScreen = new EndScreen(playTime);
                             this.Hide();
@@ -130,12 +130,12 @@ namespace movingTokensDown2
                             this.Close();
                         }
                     }
-                    if (redTokens[i].TokenPictureBox.Location.Y > 800)
+                    if (greenSquares[i].SquarePictureBox.Location.Y > 800)
                     {
-                        redTokens[i].resetPosition();
+                        greenSquares[i].resetPosition();
                         int randNumber = rand.Next(0, 6);
                         int xCoordinate = randNumber * 60 + 15;
-                        redTokens[i].moveRightLeft(right, xCoordinate);
+                        greenSquares[i].moveRightLeft(right, xCoordinate);
                     }
                 }
             }
@@ -145,23 +145,23 @@ namespace movingTokensDown2
         {
             if (e.KeyCode == Keys.A)
             {
-                blueToken.moveRightLeft(left, blueDist);
+                redSquarePlayer.moveRightLeft(left, redDistance);
             }
             if (e.KeyCode == Keys.D)
             {
-                blueToken.moveRightLeft(right, blueDist);
+                redSquarePlayer.moveRightLeft(right, redDistance);
             }
-            if (blueToken.TokenPictureBox.Location.X < 15)
+            if (redSquarePlayer.SquarePictureBox.Location.X < 15)
             {
-                blueToken.moveRightLeft(right, blueDist);
+                redSquarePlayer.moveRightLeft(right, redDistance);
             }
-            if (blueToken.TokenPictureBox.Location.X > 315)
+            if (redSquarePlayer.SquarePictureBox.Location.X > 315)
             {
-                blueToken.moveRightLeft(left, blueDist);
+                redSquarePlayer.moveRightLeft(left, redDistance);
             }
         }
 
-        private void timePlayed_Tick(object sender, EventArgs e)
+        private void TimePlayed_Tick(object sender, EventArgs e)
         {
             playTime++;
             this.Text = "TIME: " + playTime.ToString();

@@ -1,4 +1,4 @@
-﻿namespace movingTokensDown2
+﻿namespace AssessmentGame
 {
     partial class Form1
     {
@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnStart = new System.Windows.Forms.Button();
-            this.moveToken = new System.Windows.Forms.Timer(this.components);
-            this.timePlayed = new System.Windows.Forms.Timer(this.components);
+            this.MoveGreenSquares = new System.Windows.Forms.Timer(this.components);
+            this.TimePlayed = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnStart
@@ -49,13 +49,13 @@
             // 
             // moveToken
             // 
-            this.moveToken.Interval = 1;
-            this.moveToken.Tick += new System.EventHandler(this.moveToken_Tick);
+            this.MoveGreenSquares.Interval = 1;
+            this.MoveGreenSquares.Tick += new System.EventHandler(this.MoveGreenSquares_Tick);
             // 
             // timePlayed
             // 
-            this.timePlayed.Interval = 1000;
-            this.timePlayed.Tick += new System.EventHandler(this.timePlayed_Tick);
+            this.TimePlayed.Interval = 1000;
+            this.TimePlayed.Tick += new System.EventHandler(this.TimePlayed_Tick);
             // 
             // Form1
             // 
@@ -79,8 +79,8 @@
         #endregion
 
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Timer moveToken;
-        private System.Windows.Forms.Timer timePlayed;
+        private System.Windows.Forms.Timer MoveGreenSquares;
+        private System.Windows.Forms.Timer TimePlayed;
     }
 }
 

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AD3E70C9-0894-4588-80CC-A0BE1442E9A3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>movingTokensDown2</RootNamespace>
-    <AssemblyName>movingTokensDown2</AssemblyName>
+    <RootNamespace>AssessmentGame</RootNamespace>
+    <AssemblyName>AssessmentGame</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -72,7 +72,7 @@
     <Compile Include="StartPage.Designer.cs">
       <DependentUpon>StartPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="token.cs" />
+    <Compile Include="SquareImage.cs" />
     <EmbeddedResource Include="EndScreen.resx">
       <DependentUpon>EndScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +90,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="StartPage.resx">
       <DependentUpon>StartPage.cs</DependentUpon>
