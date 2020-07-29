@@ -68,7 +68,7 @@ namespace AssessmentGame
         // Displays the game form when the start button is clicked
         private void btnStart_Click_1(object sender, EventArgs e)
         {
-            Form1 gameForm = new Form1();
+            GameForm gameForm = new GameForm();
             this.Hide();
             gameForm.Show();
         }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AssessmentGame
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
-        public Form1()
+        public GameForm()
         {
             InitializeComponent();
         }
@@ -75,7 +75,7 @@ namespace AssessmentGame
                 MoveGreenSquares.Interval = 30;
                 down = 4;
             }
-            // Creates 
+            // Creates the rows of squares to then be looped when they are moved off the screen
             if (resetTime < 6)
             {
                 if (waitTime == 150)
@@ -96,6 +96,7 @@ namespace AssessmentGame
                 {
                     if (noDuplicate < 1)
                     {
+                        // detect when the picture boxes intersect to indicate that you have lost the game
                         greenSquares[i].moveUpDown(down, greenDistance);
                         if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
@@ -103,6 +104,7 @@ namespace AssessmentGame
                             MoveGreenSquares.Enabled = false;
                             TimePlayed.Enabled = false;
                             MessageBox.Show("GAME OVER!");
+                            // gets the playTime value to send it to the endScreen form to be saved in a file
                             EndScreen endScreen = new EndScreen(playTime);
                             this.Hide();
                             endScreen.Show();
@@ -117,6 +119,7 @@ namespace AssessmentGame
                 {
                     if (noDuplicate < 1)
                     {
+                        // detect when the picture boxes intersect to indicate that you have lost the game
                         greenSquares[i].moveUpDown(down, greenDistance);
                         if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
@@ -124,12 +127,14 @@ namespace AssessmentGame
                             MoveGreenSquares.Enabled = false;
                             TimePlayed.Enabled = false;
                             MessageBox.Show("GAME OVER!");
+                            // gets the playTime value to send it to the endScreen form to be saved in a file
                             EndScreen endScreen = new EndScreen(playTime);
                             this.Hide();
                             endScreen.Show();
                             this.Close();
                         }
                     }
+                    // check if the greenSquares are positioned off the screen so that they can be moved back to the top to be reused again
                     if (greenSquares[i].SquarePictureBox.Location.Y > 800)
                     {
                         greenSquares[i].resetPosition();
@@ -141,6 +146,7 @@ namespace AssessmentGame
             }
         }
 
+        // detect when the player presses the 'A' or 'D' key so that it moves the redSquarePlayer left or right respectively
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.A)
@@ -151,6 +157,7 @@ namespace AssessmentGame
             {
                 redSquarePlayer.moveRightLeft(right, redDistance);
             }
+            // stops the redSquarePlayer from moving off the screen
             if (redSquarePlayer.SquarePictureBox.Location.X < 15)
             {
                 redSquarePlayer.moveRightLeft(right, redDistance);
@@ -161,6 +168,7 @@ namespace AssessmentGame
             }
         }
 
+        // keeps track of the time played in the integer 'playTime'
         private void TimePlayed_Tick(object sender, EventArgs e)
         {
             playTime++;

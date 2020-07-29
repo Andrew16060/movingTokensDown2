@@ -1,6 +1,6 @@
 ﻿namespace AssessmentGame
 {
-    partial class Form1
+    partial class GameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -47,17 +47,17 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // moveToken
+            // MoveGreenSquares
             // 
             this.MoveGreenSquares.Interval = 1;
             this.MoveGreenSquares.Tick += new System.EventHandler(this.MoveGreenSquares_Tick);
             // 
-            // timePlayed
+            // TimePlayed
             // 
             this.TimePlayed.Interval = 1000;
             this.TimePlayed.Tick += new System.EventHandler(this.TimePlayed_Tick);
             // 
-            // Form1
+            // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -67,7 +67,7 @@
             this.Controls.Add(this.btnStart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TIME: 0";
             this.Load += new System.EventHandler(this.Form1_Load);
