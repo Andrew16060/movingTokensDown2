@@ -97,7 +97,7 @@ namespace AssessmentGame
                     if (noDuplicate < 1)
                     {
                         // detect when the picture boxes intersect to indicate that you have lost the game
-                        greenSquares[i].moveUpDown(down, greenDistance);
+                        greenSquares[i].moveDown(down, greenDistance);
                         if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
                             noDuplicate++;
@@ -120,7 +120,7 @@ namespace AssessmentGame
                     if (noDuplicate < 1)
                     {
                         // detect when the picture boxes intersect to indicate that you have lost the game
-                        greenSquares[i].moveUpDown(down, greenDistance);
+                        greenSquares[i].moveDown(down, greenDistance);
                         if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
                         {
                             noDuplicate++;
