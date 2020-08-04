@@ -35,7 +35,7 @@ namespace AssessmentGame
         }
 
         // these are the move squares method telling the squares how to move down and left or right
-        public void moveDown(int direction, int distance)
+        public void MoveDown(int direction, int distance)
         {
             SquarePictureBox.Top = SquarePictureBox.Top + (direction * distance);
         }
@@ -47,7 +47,7 @@ namespace AssessmentGame
 
 
         // method to reset the position of the green squares once they have been moved off the screen
-        public void resetPosition()
+        public void ResetPosition()
         {
             SquarePictureBox.Left = 0;
             SquarePictureBox.Top = -90;

@@ -27,16 +27,16 @@ namespace AssessmentGame
         Bitmap greenSquareImage = new Bitmap(@"../../../squareSick.png");
         Bitmap redSquareImage = new Bitmap(@"../../../squarePlayer.png");
         // Defines variables used such as the distance the  pictures move etc.
-        int greenDistance = 1;
+        const int GREEN_DISTANCE = 1;
         int down = 1;
-        int left = -1;
-        int right = 1;
-        int redDistance = 60;
+        const int LEFT = -1;
+        const int RIGHT = 1;
+        const int RED_DISTANCE = 60;
         int listNumber = 0;
         int waitTime = 150;
         int playTime = 0;
         int resetTime = 0;
-        int noDuplicate = 0;
+        bool noDuplicate = true;
 
         // Displays the player controlled character when the form loads
         private void Form1_Load(object sender, EventArgs e)
@@ -55,6 +55,7 @@ namespace AssessmentGame
         // Moves the pictures boxes down the screen
         private void MoveGreenSquares_Tick(object sender, EventArgs e)
         {
+            const int MAX_ROWS = 5;
             // Slowly increases the speed of the picture boxes to increase difficulty as the game progresses
             if (playTime == 30)
             {
@@ -80,7 +81,7 @@ namespace AssessmentGame
             {
                 if (waitTime == 150)
                 {
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < MAX_ROWS; i++)
                     {
                         int randNumber = rand.Next(0, 6);
                         int xCoordinate = randNumber * 60 + 15;
@@ -92,55 +93,20 @@ namespace AssessmentGame
                     resetTime++;
                 }
                 waitTime++;
-                for (int i = 0; i < greenSquares.Count; i++)
-                {
-                    if (noDuplicate < 1)
-                    {
-                        // detect when the picture boxes intersect to indicate that you have lost the game
-                        greenSquares[i].moveDown(down, greenDistance);
-                        if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
-                        {
-                            noDuplicate++;
-                            MoveGreenSquares.Enabled = false;
-                            TimePlayed.Enabled = false;
-                            MessageBox.Show("GAME OVER!");
-                            // gets the playTime value to send it to the endScreen form to be saved in a file
-                            EndScreen endScreen = new EndScreen(playTime);
-                            this.Hide();
-                            endScreen.Show();
-                            this.Close();
-                        }
-                    }
-                }
+                BoundsIntersect();
             }
             else
             {
+                BoundsIntersect();
                 for (int i = 0; i < greenSquares.Count; i++)
                 {
-                    if (noDuplicate < 1)
-                    {
-                        // detect when the picture boxes intersect to indicate that you have lost the game
-                        greenSquares[i].moveDown(down, greenDistance);
-                        if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
-                        {
-                            noDuplicate++;
-                            MoveGreenSquares.Enabled = false;
-                            TimePlayed.Enabled = false;
-                            MessageBox.Show("GAME OVER!");
-                            // gets the playTime value to send it to the endScreen form to be saved in a file
-                            EndScreen endScreen = new EndScreen(playTime);
-                            this.Hide();
-                            endScreen.Show();
-                            this.Close();
-                        }
-                    }
                     // check if the greenSquares are positioned off the screen so that they can be moved back to the top to be reused again
                     if (greenSquares[i].SquarePictureBox.Location.Y > 800)
                     {
-                        greenSquares[i].resetPosition();
+                        greenSquares[i].ResetPosition();
                         int randNumber = rand.Next(0, 6);
                         int xCoordinate = randNumber * 60 + 15;
-                        greenSquares[i].moveRightLeft(right, xCoordinate);
+                        greenSquares[i].moveRightLeft(RIGHT, xCoordinate);
                     }
                 }
             }
@@ -151,20 +117,20 @@ namespace AssessmentGame
         {
             if (e.KeyCode == Keys.A)
             {
-                redSquarePlayer.moveRightLeft(left, redDistance);
+                redSquarePlayer.moveRightLeft(LEFT, RED_DISTANCE);
             }
             if (e.KeyCode == Keys.D)
             {
-                redSquarePlayer.moveRightLeft(right, redDistance);
+                redSquarePlayer.moveRightLeft(RIGHT, RED_DISTANCE);
             }
             // stops the redSquarePlayer from moving off the screen
             if (redSquarePlayer.SquarePictureBox.Location.X < 15)
             {
-                redSquarePlayer.moveRightLeft(right, redDistance);
+                redSquarePlayer.moveRightLeft(RIGHT, RED_DISTANCE);
             }
             if (redSquarePlayer.SquarePictureBox.Location.X > 315)
             {
-                redSquarePlayer.moveRightLeft(left, redDistance);
+                redSquarePlayer.moveRightLeft(LEFT, RED_DISTANCE);
             }
         }
 
@@ -173,6 +139,30 @@ namespace AssessmentGame
         {
             playTime++;
             this.Text = "TIME: " + playTime.ToString();
+        }
+
+        public void BoundsIntersect()
+        {
+            for (int i = 0; i < greenSquares.Count; i++)
+            {
+                if (noDuplicate == true)
+                {
+                    // detect when the picture boxes intersect to indicate that you have lost the game
+                    greenSquares[i].MoveDown(down, GREEN_DISTANCE);
+                    if (greenSquares[i].SquarePictureBox.Bounds.IntersectsWith(redSquarePlayer.SquarePictureBox.Bounds))
+                    {
+                        noDuplicate = false;
+                        MoveGreenSquares.Enabled = false;
+                        TimePlayed.Enabled = false;
+                        MessageBox.Show("GAME OVER!");
+                        // gets the playTime value to send it to the endScreen form to be saved in a file
+                        EndScreen endScreen = new EndScreen(playTime);
+                        this.Hide();
+                        endScreen.Show();
+                        this.Close();
+                    }
+                }
+            }
         }
     }
 }

@@ -37,12 +37,12 @@
             // 
             // lblWelcomeText
             // 
-            this.lblWelcomeText.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblWelcomeText.Font = new System.Drawing.Font("Poplar Std", 60F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeText.ForeColor = System.Drawing.Color.Black;
-            this.lblWelcomeText.Location = new System.Drawing.Point(25, 25);
+            this.lblWelcomeText.BackColor = System.Drawing.Color.Black;
+            this.lblWelcomeText.Font = new System.Drawing.Font("Poplar Std", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcomeText.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblWelcomeText.Location = new System.Drawing.Point(-1, 40);
             this.lblWelcomeText.Name = "lblWelcomeText";
-            this.lblWelcomeText.Size = new System.Drawing.Size(342, 208);
+            this.lblWelcomeText.Size = new System.Drawing.Size(390, 87);
             this.lblWelcomeText.TabIndex = 0;
             this.lblWelcomeText.Text = "KEEP YOUR DISTANCE";
             this.lblWelcomeText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -51,9 +51,9 @@
             // 
             this.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHelp.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHelp.Location = new System.Drawing.Point(12, 390);
+            this.btnHelp.Location = new System.Drawing.Point(0, 540);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(365, 40);
+            this.btnHelp.Size = new System.Drawing.Size(389, 86);
             this.btnHelp.TabIndex = 2;
             this.btnHelp.Text = "TUTORIAL";
             this.btnHelp.UseVisualStyleBackColor = true;
@@ -63,9 +63,9 @@
             // 
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(12, 436);
+            this.btnExit.Location = new System.Drawing.Point(0, 651);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(365, 40);
+            this.btnExit.Size = new System.Drawing.Size(389, 86);
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -75,9 +75,9 @@
             // 
             this.btnHighScores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnHighScores.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHighScores.Location = new System.Drawing.Point(12, 344);
+            this.btnHighScores.Location = new System.Drawing.Point(0, 429);
             this.btnHighScores.Name = "btnHighScores";
-            this.btnHighScores.Size = new System.Drawing.Size(365, 40);
+            this.btnHighScores.Size = new System.Drawing.Size(389, 86);
             this.btnHighScores.TabIndex = 4;
             this.btnHighScores.Text = "HIGH SCORES";
             this.btnHighScores.UseVisualStyleBackColor = true;
@@ -85,11 +85,12 @@
             // 
             // btnStart
             // 
+            this.btnStart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStart.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(12, 298);
+            this.btnStart.Location = new System.Drawing.Point(0, 318);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(365, 40);
+            this.btnStart.Size = new System.Drawing.Size(389, 86);
             this.btnStart.TabIndex = 7;
             this.btnStart.Text = "START";
             this.btnStart.UseVisualStyleBackColor = true;
