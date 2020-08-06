@@ -20,6 +20,7 @@ namespace AssessmentGame
         // Closes the tutorial form when the close button is clicked
         private void btnClose_Click(object sender, EventArgs e)
         {
+            // hides the current form
             this.Hide();
         }
     }

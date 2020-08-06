@@ -13,9 +13,10 @@ namespace AssessmentGame
 {
     public partial class EndScreen : Form
     {
-        // gets the playTime integer from the GameForm to be saved in a text file
+        // gets the playTime integer from the GameForm
         public EndScreen(int timeScore)
         {
+            // converts the playtime score to an int to be used in this form
             InitializeComponent();
             timeScore2 = timeScore;
         }
@@ -32,6 +33,7 @@ namespace AssessmentGame
             if (txtName.Text == "")
             {
                 MessageBox.Show("Please input a name.");
+                // makes sure the submit button is still available to press
                 btnSubmit.Enabled = true;
             }
             else
@@ -40,7 +42,9 @@ namespace AssessmentGame
                 string username = txtName.Text;
                 File.AppendAllText(PATH_USERNAME, username + "\r\n");
                 File.AppendAllText(PATH_TIME_SCORE, timeScore2 + "\r\n");
+                // displays the score that the current user just got as well as their inputted username
                 MessageBox.Show("Well done " + username + " on getting a score of " + timeScore2 + "!");
+                // disables the submit button to stop the user from inputting multiple results when they had only played once
                 btnSubmit.Enabled = false;
             }
         }
@@ -48,8 +52,10 @@ namespace AssessmentGame
         // displays the top 10 highscores in the text files
         private void btnHighScores_Click(object sender, EventArgs e)
         {
+            // pulls the display high scores method from the high score class
             HighScore highScore = new HighScore();
             highScore.DisplayHighScores();
+            // displays the methods output string in a message box showing the top 10 scores for the game
             MessageBox.Show(highScore.Output);
         }
 
@@ -57,6 +63,7 @@ namespace AssessmentGame
         private void btnMenu_Click(object sender, EventArgs e)
         {
             StartPage menu = new StartPage();
+            // hides current form and displays the start page form
             this.Hide();
             menu.Show();
         }
